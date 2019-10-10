@@ -1,3 +1,14 @@
-.new-fighter {
+.eigenschaften,
+.abgeleitete-werte {
   display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0 1rem;
+  padding: 1rem 0;
+  max-width: 25rem;
+}
+
+.eigenschaften > div,
+.abgeleitete-werte > div {
+  display: grid;
+  grid-template-columns: 1fr;
 }
