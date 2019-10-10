@@ -1,0 +1,33 @@
+body {
+  font: 1rem Bookman, Helvetica;
+  margin: 1rem;
+  background: white;
+}
+
+button {
+  height: 2rem;
+  padding: 0.25rem 1rem;
+  min-width: 6rem;
+  color: #fff;
+  text-align: center;
+  font-size: 1rem;
+  background-color: #696969;
+  border-radius: 0.5rem;
+  border: 1px solid #bbb;
+  box-sizing: border-box;
+}
+
+input {
+  height: 2rem;
+  padding: 0.25rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #d1d1d1;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}

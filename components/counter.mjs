@@ -2,7 +2,7 @@ import { get, set, Store } from '../util/idb.mjs';
 
 const innerHTML = `
 <div>
-  Runde <span id="counter"></span>
+  <h1>Runde <span id="counter"></span></h1>
   <button id="next-round">Nächste Runde</button>
   <button id="reset">Reset</button>
 </div>

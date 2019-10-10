@@ -2,7 +2,7 @@ import { removeChildren } from '../util/removeChildren.mjs';
 import { getFighters } from '../util/fighter.mjs';
 
 const innerHTML = `
-<h1>List of fighters:</h1>
+<h1>Kämpferliste:</h1>
 <ol id="fighters"></ol>
 `;
 
