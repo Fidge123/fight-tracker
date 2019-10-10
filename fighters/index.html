@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
   <head>
     <title>DSA5 Battle Tracker</title>
     <meta charset="utf-8" />
     <meta name="referrer" content="same-origin" />
-    <link rel="shortcut icon" href="../util/ulisses.png" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="https://ulisses-regelwiki.de/files/media/Ulisses-Icon.png" type="image/x-icon" />
     <link rel="stylesheet" href="../util/style.css" />
   </head>
 
@@ -17,7 +18,19 @@
     <h1>List of fighters:</h1>
     <ol id="fighters"></ol>
 
+    <form action="../battlefield/index.html">
+      <input type="submit" value="Zurück" />
+    </form>
+
     <!-- Scripts -->
-    <script type="module" src="./index.mjs"></script>
+    <script async type="module">
+      import { createFighter, drawListOfFighters } from './fighters.mjs';
+
+      drawListOfFighters('fighters');
+      document.getElementById('create').onclick = () => {
+        createFighter({ name: document.getElementById('fname').value, ini: document.getElementById('fini').value });
+        drawListOfFighters('fighters');
+      };
+    </script>
   </body>
 </html>
