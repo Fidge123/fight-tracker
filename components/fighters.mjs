@@ -9,73 +9,27 @@ const innerHTML = `
   </div>
 
   <div class="eigenschaften">
-    <div>
-      <label for="fmu"><abbr title="Mut">MU</abbr></label>
-      <input type="number" id="fmu" min="0" max="25" />
-    </div>
-    <div>
-      <label for="fkl"><abbr title="Klugheit">KL</abbr></label>
-      <input type="number" id="fkl" min="0" max="25" />
-    </div>
-    <div>
-      <label for="fin"><abbr title="Intuition">IN</abbr></label>
-      <input type="number" id="fin" min="0" max="25" />
-    </div>
-    <div>
-      <label for="fch"><abbr title="Charisma">CH</abbr></label>
-      <input type="number" id="fch" min="0" max="25" />
-    </div>
-    <div>
-      <label for="fff"><abbr title="Fingerfertigkeit">FF</abbr></label>
-      <input type="number" id="fff" min="0" max="25" />
-    </div>
-    <div>
-      <label for="fge"><abbr title="Gewandtheit">GE</abbr></label>
-      <input type="number" id="fge" min="0" max="25" />
-    </div>
-    <div>
-      <label for="fko"><abbr title="Konstitution">KO</abbr></label>
-      <input type="number" id="fko" min="0" max="25" />
-    </div>
-    <div>
-      <label for="fkk"><abbr title="Körperkraft">KK</abbr></label>
-      <input type="number" id="fkk" min="0" max="25" />
-    </div>
+    <number-input id="MU" title="Mut" min="0" max="25"></number-input>
+    <number-input id="KL" title="Klugheit" min="0" max="25"></number-input>
+    <number-input id="IN" title="Intuition" min="0" max="25"></number-input>
+    <number-input id="CH" title="Charisma" min="0" max="25"></number-input>
+
+    <number-input id="FF" title="Fingerfertigkeit" min="0" max="25"></number-input>
+    <number-input id="GE" title="Gewandtheit" min="0" max="25"></number-input>
+    <number-input id="KO" title="Konstitution" min="0" max="25"></number-input>
+    <number-input id="KK" title="Körperkraft" min="0" max="25"></number-input>
   </div>
 
   <div class="abgeleitete-werte">
-    <div>
-      <label for="flep"><abbr title="Lebenspunkte">LeP</abbr></label>
-      <input type="number" id="flep" min="0" max="100" />
-    </div>
-    <div>
-      <label for="fasp"><abbr title="Astralpunkte">AsP</abbr></label>
-      <input type="number" id="fasp" min="0" max="100" />
-    </div>
-    <div>
-      <label for="fkap"><abbr title="Karmapunkte">KaP</abbr></label>
-      <input type="number" id="fkap" min="0" max="100" />
-    </div>
-    <div>
-      <label for="fsk"><abbr title="Seelenkraft">SK</abbr></label>
-      <input type="number" id="fsk" min="0" max="10" />
-    </div>
-    <div>
-      <label for="fzk"><abbr title="Zähigkeit">ZK</abbr></label>
-      <input type="number" id="fzk" min="0" max="10" />
-    </div>
-    <div>
-      <label for="faw"><abbr title="Ausweichenwert">AW</abbr></label>
-      <input type="number" id="faw" min="0" max="25" />
-    </div>
-    <div>
-      <label for="fini"><abbr title="Initiative">INI</abbr></label>
-      <input type="number" id="fini" min="0" max="50" />
-    </div>
-    <div>
-      <label for="fgs"><abbr title="Geschwindigkeit">GS</abbr></label>
-      <input type="number" id="fgs" min="0" max="100" />
-    </div>
+    <number-input id="LeP" title="Lebenspunkte" min="0" max="500"></number-input>
+    <number-input id="AsP" title="Astralpunkte" min="0" max="100"></number-input>
+    <number-input id="KaP" title="Karmapunkte" min="0" max="100"></number-input>
+    <number-input id="SK" title="Seelenkraft" min="0" max="10"></number-input>
+
+    <number-input id="ZK" title="Zähigkeit" min="0" max="10"></number-input>
+    <number-input id="AW" title="Ausweichenwert" min="0" max="25"></number-input>
+    <number-input id="INI" title="Initiative" min="0" max="50"></number-input>
+    <number-input id="GS" title="Geschwindigkeit" min="0" max="100"></number-input>
   </div>
 </div>
 <button id="create">Erstellen</button>
@@ -103,3 +57,16 @@ class Fighters extends HTMLElement {
 }
 
 customElements.define('dsa-fighters', Fighters);
+customElements.define(
+  'number-input',
+  class extends HTMLElement {
+    constructor() {
+      super();
+      const id = 'f' + this.getAttribute('id');
+      this.innerHTML = `
+        <label for="${id}"><abbr title="${this.getAttribute('title')}">${this.getAttribute('id')}</abbr></label>
+        <input type="number" id="${id}" min="${this.getAttribute('min')}" max="${this.getAttribute('max')}" />
+      `;
+    }
+  }
+);
