@@ -63,9 +63,22 @@ class CreateFighter extends HTMLElement {
         fighter.abgeleiteteWerte[input.getAttribute('id')] = input.getValue();
       }
 
-      createFighter(fighter);
-      document.getElementById('list').drawList();
+      createFighter(fighter)
+        .then(() => {
+          this.clearForm();
+          document.getElementById('list').drawList();
+        })
+        .catch(() => {
+          alert('Ein Fehler ist aufgetreten!');
+        });
     };
+  }
+
+  clearForm() {
+    document.getElementById('fname').value = null;
+    for (const input of document.getElementsByTagName('number-input')) {
+      input.clear();
+    }
   }
 }
 
@@ -84,6 +97,10 @@ customElements.define(
 
     getValue() {
       return document.getElementById('f' + this.getAttribute('id')).value;
+    }
+
+    clear() {
+      document.getElementById('f' + this.getAttribute('id')).value = null;
     }
   }
 );
