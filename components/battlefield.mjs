@@ -1,4 +1,4 @@
-const innerHTML = `
+const innerHTML = /* html */ `
 <dsa-counter></dsa-counter>
 <dsa-fighter-list></dsa-fighter-list>
 <button id="add">Hinzufügen / Ändern</button>

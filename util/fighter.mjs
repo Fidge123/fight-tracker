@@ -1,4 +1,4 @@
-import { keys, get, set, Store } from '../util/idb.mjs';
+import { keys, get, set, del, clear, Store } from '../util/idb.mjs';
 
 const store = new Store('dsa5-fighters', 'fighters');
 
@@ -10,4 +10,12 @@ export async function getFighters() {
 
 export async function createFighter({ name, eigenschaften, abgeleiteteWerte }) {
   return set(name, { name, eigenschaften: { ...eigenschaften }, abgeleiteteWerte: { ...abgeleiteteWerte } }, store);
+}
+
+export async function deleteFighter(name) {
+  return del(name, store);
+}
+
+export async function removeAll() {
+  return clear(store);
 }

@@ -1,6 +1,6 @@
 import { get, set, Store } from '../util/idb.mjs';
 
-const innerHTML = `
+const innerHTML = /* html */ `
 <div>
   <h1>Runde <span id="counter"></span></h1>
   <button id="next-round">Nächste Runde</button>

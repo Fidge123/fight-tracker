@@ -1,7 +1,7 @@
 import { removeChildren } from '../util/removeChildren.mjs';
 import { getFighters } from '../util/fighter.mjs';
 
-const innerHTML = `
+const innerHTML = /* html */ `
 <h1>Kämpferliste:</h1>
 <ol id="fighters"></ol>
 `;
