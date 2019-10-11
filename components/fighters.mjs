@@ -8,7 +8,7 @@ const innerHTML = `
     <input id="fname" />
   </div>
 
-  <div class="eigenschaften">
+  <div id="eigenschaften">
     <number-input id="MU" title="Mut" min="0" max="25"></number-input>
     <number-input id="KL" title="Klugheit" min="0" max="25"></number-input>
     <number-input id="IN" title="Intuition" min="0" max="25"></number-input>
@@ -20,7 +20,7 @@ const innerHTML = `
     <number-input id="KK" title="Körperkraft" min="0" max="25"></number-input>
   </div>
 
-  <div class="abgeleitete-werte">
+  <div id="abgeleitete-werte">
     <number-input id="LeP" title="Lebenspunkte" min="0" max="500"></number-input>
     <number-input id="AsP" title="Astralpunkte" min="0" max="100"></number-input>
     <number-input id="KaP" title="Karmapunkte" min="0" max="100"></number-input>
@@ -46,7 +46,17 @@ class Fighters extends HTMLElement {
 
   connectedCallback() {
     document.getElementById('create').onclick = () => {
-      createFighter({ name: document.getElementById('fname').value, ini: document.getElementById('fini').value });
+      const fighter = { name: document.getElementById('fname').value, eigenschaften: {}, abgeleiteteWerte: {}, waffen: {} };
+
+      for (const input of document.getElementById('eigenschaften').getElementsByTagName('number-input')) {
+        fighter.eigenschaften[input.getAttribute('id')] = input.getValue();
+      }
+
+      for (const input of document.getElementById('abgeleitete-werte').getElementsByTagName('number-input')) {
+        fighter.abgeleiteteWerte[input.getAttribute('id')] = input.getValue();
+      }
+
+      createFighter(fighter);
       document.getElementById('list').drawList();
     };
 
@@ -67,6 +77,10 @@ customElements.define(
         <label for="${id}"><abbr title="${this.getAttribute('title')}">${this.getAttribute('id')}</abbr></label>
         <input type="number" id="${id}" min="${this.getAttribute('min')}" max="${this.getAttribute('max')}" />
       `;
+    }
+
+    getValue() {
+      return document.getElementById('f' + this.getAttribute('id')).value;
     }
   }
 );

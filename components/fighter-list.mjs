@@ -24,7 +24,7 @@ class FighterList extends HTMLElement {
     const fighters = await getFighters();
     fighters.forEach(fighter => {
       const item = document.createElement('li');
-      item.appendChild(document.createTextNode(`${fighter.name} (${fighter.ini})`));
+      item.appendChild(document.createTextNode(`${fighter.name} (${fighter.abgeleiteteWerte.INI})`));
       document.getElementById('fighters').appendChild(item);
     });
   }
