@@ -19,7 +19,7 @@ const innerHTML = /* html */ `
       <number-input id="KK" title="Körperkraft" min="0" max="25"></number-input>
     </div>
 
-    <div id="abgeleitete-werte">
+    <div id="basiswerte">
       <number-input id="LeP" title="Lebenspunkte" min="0" max="500"></number-input>
       <number-input id="AsP" title="Astralpunkte" min="0" max="100"></number-input>
       <number-input id="KaP" title="Karmapunkte" min="0" max="100"></number-input>
@@ -45,7 +45,7 @@ class CreateFighter extends HTMLElement {
       const fighter = {
         name: document.getElementById('fname').value,
         eigenschaften: {},
-        abgeleiteteWerte: {},
+        basiswerte: {},
         waffen: {},
         ruestung: {},
         vorteile: [],
@@ -59,8 +59,8 @@ class CreateFighter extends HTMLElement {
         fighter.eigenschaften[input.getAttribute('id')] = input.getValue();
       }
 
-      for (const input of document.getElementById('abgeleitete-werte').getElementsByTagName('number-input')) {
-        fighter.abgeleiteteWerte[input.getAttribute('id')] = input.getValue();
+      for (const input of document.getElementById('basiswerte').getElementsByTagName('number-input')) {
+        fighter.basiswerte[input.getAttribute('id')] = input.getValue();
       }
 
       createFighter(fighter)

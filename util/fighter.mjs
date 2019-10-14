@@ -5,11 +5,11 @@ const store = new Store('dsa5-fighters', 'fighters');
 export async function getFighters() {
   const names = await keys(store);
   const fighters = await Promise.all(names.map(name => get(name, store)));
-  return fighters.sort((a, b) => b.abgeleiteteWerte.INI - a.abgeleiteteWerte.INI);
+  return fighters.sort((a, b) => b.basiswerte.INI - a.basiswerte.INI);
 }
 
-export async function createFighter({ name, eigenschaften, abgeleiteteWerte }) {
-  return set(name, { name, eigenschaften: { ...eigenschaften }, abgeleiteteWerte: { ...abgeleiteteWerte } }, store);
+export async function createFighter({ name, eigenschaften, basiswerte }) {
+  return set(name, { name, eigenschaften: { ...eigenschaften }, basiswerte: { ...basiswerte } }, store);
 }
 
 export async function deleteFighter(name) {
