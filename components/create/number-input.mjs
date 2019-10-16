@@ -1,8 +1,11 @@
 const style = /* html */ `
 <style>
   input {
+    -webkit-appearance: none;
+    appearance: none;
     height: 2rem;
     min-width: 4rem;
+    font: 1rem Bookman, Helvetica;
     padding: 0.25rem 0.25rem 0.25rem 0.5rem;
     margin: 0.5rem 0;
     border-radius: 0.5rem;

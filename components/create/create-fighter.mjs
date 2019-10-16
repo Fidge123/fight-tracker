@@ -21,7 +21,7 @@ class CreateFighter extends HTMLElement {
 
   async createCallback() {
     const fighter = {
-      name: document.getElementById('fname').value,
+      meta: document.getElementById('meta').getValue(),
       eigenschaften: document.getElementById('eigenschaften').getValue(),
       basiswerte: document.getElementById('basiswerte').getValue(),
       waffen: {},
@@ -33,20 +33,19 @@ class CreateFighter extends HTMLElement {
       zauber: []
     };
 
-    try {
-      await createFighter(fighter);
-      this.clearForm();
-      document.getElementById('list').drawList();
-    } catch (error) {
-      alert('Ein Fehler ist aufgetreten!');
+    if (fighter.meta.name) {
+      try {
+        await createFighter(fighter);
+        this.clearForm();
+        document.getElementById('list').drawList();
+      } catch (error) {
+        alert('Ein Fehler ist aufgetreten!');
+      }
     }
   }
 
   clearForm() {
-    document.getElementById('fname').value = null;
-    for (const input of document.getElementsByTagName('number-input')) {
-      input.clear();
-    }
+    this.querySelectorAll('.new-fighter > *').forEach(input => input.clear());
   }
 }
 

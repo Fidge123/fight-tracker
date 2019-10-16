@@ -33,16 +33,13 @@ customElements.define(
     getValue() {
       const eigenschaften = {};
       for (const input of this.querySelectorAll('number-input')) {
-        console.log(input.getAttribute('id'));
         eigenschaften[input.getAttribute('id')] = input.getValue();
       }
       return eigenschaften;
     }
 
     clear() {
-      for (const input of this.querySelectorAll('number-input')) {
-        input.value = null;
-      }
+      this.querySelectorAll('number-input').forEach(input => input.clear());
     }
   }
 );

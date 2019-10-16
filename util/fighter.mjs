@@ -8,8 +8,8 @@ export async function getFighters() {
   return fighters.sort((a, b) => b.basiswerte.INI - a.basiswerte.INI);
 }
 
-export async function createFighter({ name, eigenschaften, basiswerte }) {
-  return set(name, { name, eigenschaften: { ...eigenschaften }, basiswerte: { ...basiswerte } }, store);
+export async function createFighter({ meta, eigenschaften, basiswerte }) {
+  return set(meta.name, { meta, eigenschaften, basiswerte }, store);
 }
 
 export async function deleteFighter(name) {

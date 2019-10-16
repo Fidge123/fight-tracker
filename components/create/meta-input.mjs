@@ -1,4 +1,5 @@
 import { removeChildren } from '../../util/removeChildren.mjs';
+import { kulturenListe } from '../../util/kultur.mjs';
 
 const innerHTML = /* html */ `
 <div>
@@ -23,39 +24,15 @@ const innerHTML = /* html */ `
   <label>Profession</label>
   <select name="Profession" id="profession">
     <option value="profan">Profan</option>
-    <option value="geweiht">Geweiht</option>
-    <option value="magisch">Magisch</option>
+    <option value="geweiht-KL">Geweiht (Praios, Hesinde)</option>
+    <option value="geweiht-MU">Geweiht (Rondra, Boron)</option>
+    <option value="geweiht-IN">Geweiht (Phex, Peraine)</option>
+    <option value="magisch-KL">Gildenmagier</option>
+    <option value="magisch-CH">Hexen</option>
+    <option value="magisch-IN">Elfen</option>
   </select>
 </div>
 `;
-
-const kulturenListe = {
-  mensch: [
-    'Andergaster',
-    'Aranier',
-    'Bornländer',
-    'Fjarninger',
-    'Horasier',
-    'Koboldweltler',
-    'Maraskaner',
-    'Mhanadistani',
-    'Mittelreicher',
-    'Mohas',
-    'Nivesen',
-    'Norbarden',
-    'Nordaventurier',
-    'Nostrier',
-    'Novadis',
-    'Svellttaler',
-    'Südaventurier',
-    'Thorwaler',
-    'Trollzacker',
-    'Zahori',
-    'Zyklopäer'
-  ],
-  zwerg: ['Ambosszwerge', 'Brilliantzwerge', 'Erzzwerge', 'Hügelzwerge', 'Wildzwerge'],
-  elf: ['Auelfen', 'Firnelfen', 'Steppenelfen', 'Waldelfen']
-};
 
 customElements.define(
   'meta-input',
@@ -71,12 +48,21 @@ customElements.define(
       this.querySelector('#spezies').addEventListener('change', () => {
         this.setKulturOptions();
       });
+
+      this.on('change', 'spezies', () => {
+        if (this.getSelectedValue('#spezies') === 'elf') {
+          const options = [...this.querySelector('#profession').options];
+          this.querySelector('#profession').selectedIndex = options.findIndex(option => option.value === 'magisch-IN');
+          this.querySelector('#profession').disabled = true;
+        } else {
+          this.querySelector('#profession').disabled = false;
+        }
+      });
     }
 
     setKulturOptions() {
-      const speziesSelect = this.querySelector('#spezies');
       const kulturSelect = this.querySelector('#kultur');
-      const spezies = speziesSelect.options[speziesSelect.selectedIndex].value;
+      const spezies = this.getSelectedValue('#spezies');
       const kulturen = spezies === 'halbelf' ? [...kulturenListe.mensch, ...kulturenListe.elf] : kulturenListe[spezies];
 
       removeChildren(kulturSelect);
@@ -84,10 +70,37 @@ customElements.define(
       kulturen.map(kultur => new Option(kultur, kultur.toLowerCase())).forEach(opt => kulturSelect.appendChild(opt));
     }
 
-    on(event, id, cb) {}
+    on(event, id, cb) {
+      if (id === 'all') {
+        for (const input of this.querySelectorAll('input, select')) {
+          input.addEventListener(event, () => {
+            cb(this.getValue());
+          });
+        }
+      } else {
+        this.querySelector(`#${id}`).addEventListener(event, cb);
+      }
+    }
 
-    getValue() {}
+    getValue() {
+      return {
+        name: this.querySelector('#name').value,
+        spezies: this.getSelectedValue('#spezies'),
+        kultur: this.getSelectedValue('#kultur'),
+        profession: this.getSelectedValue('#profession')
+      };
+    }
 
-    clear() {}
+    clear() {
+      this.querySelector('#name').value = null;
+      this.querySelector('#spezies').selectedIndex = 0;
+      this.querySelector('#kultur').selectedIndex = 0;
+      this.querySelector('#profession').selectedIndex = 0;
+    }
+
+    getSelectedValue(id) {
+      const select = this.querySelector(id);
+      return select.options[select.selectedIndex].value;
+    }
   }
 );
