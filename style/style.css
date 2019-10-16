@@ -1,5 +1,5 @@
-#eigenschaften,
-#basiswerte {
+eigenschaften-input,
+basiswerte-input {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0 1rem;
