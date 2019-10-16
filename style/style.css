@@ -1,13 +1,17 @@
-eigenschaften-input,
-basiswerte-input {
+.new-fighter > * {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0 1rem;
   padding: 1rem 0;
-  max-width: 25rem;
+  max-width: 30rem;
 }
 
 number-input {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+meta-input > div {
   display: grid;
   grid-template-columns: 1fr;
 }

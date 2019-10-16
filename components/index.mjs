@@ -7,4 +7,5 @@ export * from './welcome.mjs';
 export * from './create/basiswerte-input.mjs';
 export * from './create/create-fighter.mjs';
 export * from './create/eigenschaften-input.mjs';
+export * from './create/meta-input.mjs';
 export * from './create/number-input.mjs';

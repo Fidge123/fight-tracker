@@ -17,13 +17,15 @@ button {
   box-sizing: border-box;
 }
 
-input {
+input,
+select {
   height: 2rem;
   min-width: 4rem;
   padding: 0.25rem 0.25rem 0.25rem 0.5rem;
-  margin-bottom: 0.5rem;
+  margin: 0.5rem 0;
   border-radius: 0.5rem;
   border: 1px solid #d1d1d1;
+  background-color: rgb(255, 255, 255);
   box-shadow: none;
   box-sizing: border-box;
 }

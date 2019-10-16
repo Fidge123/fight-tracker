@@ -4,7 +4,7 @@ const style = /* html */ `
     height: 2rem;
     min-width: 4rem;
     padding: 0.25rem 0.25rem 0.25rem 0.5rem;
-    margin-bottom: 0.5rem;
+    margin: 0.5rem 0;
     border-radius: 0.5rem;
     border: 1px solid #d1d1d1;
     box-shadow: none;
@@ -13,7 +13,6 @@ const style = /* html */ `
 
   label {
     font-weight: 600;
-    margin-bottom: 0.25rem;
   }
 
   abbr {

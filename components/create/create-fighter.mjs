@@ -1,24 +1,12 @@
 import { createFighter } from '../../util/fighter.mjs';
 
 const innerHTML = /* html */ `
-  <div class="new-fighter">
-    <div>
-      <label for="fname">Name</label>
-      <input id="fname" />
-      <!-- label for="fspezies">Spezies</label>
-      <select name="Spezies" id="fspezies">
-        <option value="mensch">Mensch</option>
-        <option value="zwerg">Zwerg</option>
-        <option value="elf">Elf</option>
-      </select>
-      <label>Kultur</label>
-      <label>Profession (profan, geweiht, magisch)</label -->
-    </div>
-
-    <eigenschaften-input id="eigenschaften"></eigenschaften-input>
-    <basiswerte-input id="basiswerte"></basiswerte-input>
-  </div>
-  <button id="create">Erstellen</button>
+<div class="new-fighter">
+  <meta-input id="meta"></meta-input>
+  <eigenschaften-input id="eigenschaften"></eigenschaften-input>
+  <basiswerte-input id="basiswerte"></basiswerte-input>
+</div>
+<button id="create">Erstellen</button>
 `;
 
 class CreateFighter extends HTMLElement {
