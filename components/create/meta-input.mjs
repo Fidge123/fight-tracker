@@ -24,12 +24,17 @@ const innerHTML = /* html */ `
   <label>Profession</label>
   <select name="Profession" id="profession">
     <option value="profan">Profan</option>
-    <option value="geweiht-KL">Geweiht (Praios, Hesinde)</option>
-    <option value="geweiht-MU">Geweiht (Rondra, Boron)</option>
-    <option value="geweiht-IN">Geweiht (Phex, Peraine)</option>
-    <option value="magisch-KL">Gildenmagier</option>
-    <option value="magisch-CH">Hexen</option>
-    <option value="magisch-IN">Elfen</option>
+    <option value="geweiht-KL">Geweiht (Praios, Hesinde, Travia, Nandus)</option>
+    <option value="geweiht-MU">Geweiht (Rondra, Boron, Firun, Kor, Swafnir, Namenloser)</option>
+    <option value="geweiht-IN">Geweiht (Phex, Peraine, Ingerimm, Aves)</option>
+    <option value="geweiht-CH">Geweiht (Efferd, Tsa, Rahja, Ifirn)</option>
+    <option value="magisch-1-KL">Gildenmagier, Druiden</option>
+    <option value="magisch-2-KL">Zauberalchimisten</option>
+    <option value="magisch-1-CH">Hexen, Scharlatane, Geoden</option>
+    <option value="magisch-2-CH">Zauberbarden, Zaubertänzer</option>
+    <option value="magisch-1-IN">Elfen, Schelme, Zibilijas</option>
+    <option value="magisch-2-IN">Animisten</option>
+    <option value="magisch-1">Magiedilettanten</option>
   </select>
 </div>
 `;

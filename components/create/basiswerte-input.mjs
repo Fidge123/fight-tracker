@@ -41,15 +41,15 @@ customElements.define(
     }
 
     updateMagieWerte() {
-      const [professionsTyp, leitEigenschaft] = document
+      const [professionsTyp, modifikator, leitEigenschaft] = document
         .getElementById('meta')
         .getValue()
         .profession.split('-');
       const eigenschaften = document.getElementById('eigenschaften').getValue();
 
-      const asp = professionsTyp === 'magisch' ? 20 + eigenschaften[leitEigenschaft] : 0;
+      const asp = professionsTyp === 'magisch' ? 20 + (eigenschaften[leitEigenschaft] || 0) / modifikator : 0;
       document.getElementById('AsP').setValue(asp);
-      const kap = professionsTyp === 'geweiht' ? 20 + eigenschaften[leitEigenschaft] : 0;
+      const kap = professionsTyp === 'geweiht' ? 20 + (eigenschaften[leitEigenschaft] || 0) : 0;
       document.getElementById('KaP').setValue(kap);
     }
 
